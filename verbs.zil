@@ -1805,9 +1805,7 @@ long description (fdesc or ldesc), otherwise will print short."
 			       <COND (<L? .LEVEL 0> <SET LEVEL 0>)>
 			       <DESCRIBE-OBJECT .Y .V? .LEVEL>)
 			      (<AND <FIRST? .Y> <SEE-INSIDE? .Y>>
-			       <SET LEVEL <+ .LEVEL 1>> ;"not in Zork III"
-			       <PRINT-CONT .Y .V? .LEVEL>
-			       <SET LEVEL <- .LEVEL 1>> ;"not in Zork III")>)>
+			       <PRINT-CONT .Y .V? .LEVEL>)>)>
 		 <SET Y <NEXT? .Y>>>
 	 <COND (<AND .1ST? .SHIT> <RFALSE>) (T <RTRUE>)>>
 
