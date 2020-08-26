@@ -1759,19 +1759,7 @@ long description (fdesc or ldesc), otherwise will print short."
 		<SET INV? T>)
 	       (ELSE
 		<REPEAT ()
-			<COND %<COND (<==? ,ZORK-NUMBER 2>
-				      '(<NOT .Y>
-					<COND (<AND <0? .LEVEL>
-						    <==? ,SPELL? ,S-FANTASIZE>
-						    <PROB 20>>
-					       <TELL "There is a "
-						     <PICK-ONE ,FANTASIES>
-						     " here." CR>
-					       <SET 1ST? <>>)>
-					<RETURN>))
-				     (ELSE
-				      '(<NOT .Y>
-					<RETURN>))>
+			<COND (<NOT .Y> <RETURN>)
 			      (<EQUAL? .Y .AV> <SET PV? T>)
 			      (<EQUAL? .Y ,WINNER>)
 			      (<AND <NOT <FSET? .Y ,INVISIBLE>>
@@ -1790,6 +1778,14 @@ long description (fdesc or ldesc), otherwise will print short."
 	 <SET Y <FIRST? .OBJ>>
 	 <REPEAT ()
 		 <COND (<NOT .Y>
+			%<COND (<==? ,ZORK-NUMBER 2>
+				'<COND (<AND <0? .LEVEL>
+					     <EQUAL? ,SPELL? ,S-FANTASIZE>
+					     <PROB 20>>
+					<TELL "There is a "
+					      <PICK-ONE ,FANTASIES>
+					      " here." CR>
+					<SET 1ST? <>>)>)>
 			<COND (<AND .PV? .AV <FIRST? .AV>>
 			       <SET LEVEL <+ .LEVEL 1>> ;"not in Zork III"
 			       <PRINT-CONT .AV .V? .LEVEL>)>
